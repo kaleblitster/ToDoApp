@@ -8,7 +8,7 @@ body{
     font-family: 'Catamaran', sans-serif;
 }
 
-.modal{
+.outBox{
     width: 100%;
     height: 100%;
     position: absolute;
@@ -34,6 +34,7 @@ h1{
 .styling{
     font-family: 'Pacifico', cursive;
     margin-right: 5px;
+    color: #ffcba4;
 }
 
 .inputDiv{
@@ -60,18 +61,18 @@ h1{
     border: none;
     color: #FFFFFF;
     margin: 0.25rem;
-    background-color: blue;
+    background-color: #4C4CFF;
     cursor: pointer;
 }
 .addButton hover{
     opacity: 0.7;
 }
-.item{
+.container{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.item .itemInput{
+.container .itemInput{
     outline: none;
     border: none;
     color: #FFFFFF;

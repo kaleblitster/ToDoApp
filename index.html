@@ -3,41 +3,33 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
-    <title>Your To Do List</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <title>Your ToDo List</title>
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>-->
+<!--    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran|Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
-
-    <style>
-
-        .list i{
-            cursor: pointer;
-        }
-    </style>
+    <script src="script.js" defer></script>
 
 </head>
 <body>
-
-    <div id="myName"></div>
-
     <div class="container">
-        <div class="body">
+        <div class="modal">
             <div class="centerbox">
+                <h1><span class="styling">ToDo</span>List</h1>
 
-                <div class="title">
-                    Your to do list
+                <div class="inputDiv">
+                    <input class="input" type="text" placeholder="Add to your list...">
+                    <button class="addButton"><i class="fas fa-plus"></i></i></button>
                 </div>
-
-                <hr>
-
-                <input type="text" id="todo" onkeyup="saveitem(event)" placeholder="Add to list...">
-                <span onclick="newElement()" class="addBtn">Add</span>
-                <div class="listbox"></div>
+                <div class="item">
+                    <input type="text" class="itemInput" value="Hello" disabled>
+                    <button class="checkButton"><i class="fas fa-check"></i></button>
+                    <button class="editButton"><i class="fas fa-pen"></i></button>
+                    <button class="deleteButton"><i class="fas fa-trash"></i></button>
+                </div>
             </div>
         </div>
     </div>
-
 </body>
 </html>

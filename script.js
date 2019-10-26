@@ -1,98 +1,57 @@
 
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    myNodelist[i].appendChild(span);
+}
 
-
-
-// $("#container").hide();
-
-
-
-$("#myName").html("");
-
-
-
-
-
-let bigList = [];
-let idcount = 0;
-
-$(".listbox").sortable({
-    stop: function(event, ui) {executecode();}
-});
-
-function saveitem(event){
-    switch(event.which){
-        case 13:
-            let myval = $("#todo").val();
-            console.log(myval);
-            let tempObj = {};
-            tempObj.id = idcount;
-            tempObj.listname = myval;
-            tempObj.liscol = [];
-            bigList.push(tempObj);
-            printmypage();
-            $("#todo").val("");
-            idcount ++;
-            break;
-        default:
-        //do nothing
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+        var div = this.parentElement;
+        div.style.display = "none";
     }
 }
 
-function printmypage(){
-    $(".listbox").html("");
-    for(var i = 0; i < bigList.length; i++){
-        $(".listbox").append(`<div class="list">
-                            <i class="fas fa-times" onclick="removelist(this, ${bigList[i].id})"></i>
-                            <span>${bigList[i].listname}</span>
-                            </div>`);
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+    if (ev.target.tagName === 'LI') {
+        ev.target.classList.toggle('checked');
     }
-}
+}, false);
 
-function removelist(el, myid){
-    /*$(el).parent().fadeOut('slow', function () {
-        
-    });*/
-    for(var i = 0; i < bigList.length; i++){
-        if(myid == bigList[i].id){
-            bigList.splice(i, 1);
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+    var li = document.createElement("li");
+    var inputValue = document.getElementById("myInput").value;
+    var t = document.createTextNode(inputValue);
+    li.appendChild(t);
+    if (inputValue === '') {
+        alert("You must write something!");
+    } else {
+        document.getElementById("myUL").appendChild(li);
+    }
+    document.getElementById("myInput").value = "";
+
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    li.appendChild(span);
+
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function() {
+            var div = this.parentElement;
+            div.style.display = "none";
         }
     }
-
-    $(el).parent().animate( {
-        opacity: 0,
-        left: "-=50",
-        height: 0,
-    },  600, function () {
-        $(el).parent().remove();
-        printmypage();
-    });
 }
-function executecode(){
-    console.log("hola");
-    let listarray = $(".listbox").children();
-    for(let i = 0; i < listarray.length; i++){
-        //console.log(listarray[i]);
-        $(listarray[i]).attr("id", `listnum${i}`);
-    }
-   //$(listarray[0]).addClass("activeitem");
-}
-/*function saveitem(){
-    let myval = $("#todo").val();
-    console.log(myval);
-}*/
-function retrieveSelectedChat() {
-    let chatString = localStorage.getItem(CURRENT_CHAT_KEY);
-    if (chatString) {
-        let parsedChat = JSON.parse(chatString);
 
-        let chat = new Chat(parsedChat.name);
-        parsedChat.messages.forEach(message => {
-            let newMessage = new Message(message.text, message.user);
-            newMessage.seen = message.seen;
-            chat.addMessage(newMessage);
-        });
-
-        return chat;
-    }
-    return null;
-}

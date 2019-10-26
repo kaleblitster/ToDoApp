@@ -1,66 +1,105 @@
 html, body{
-    width: 100%;
     height: 100%;
-    padding: 0;
-    margin: 0;
+}
+body{
+    background-image: url("lukas-blazek-EWDvHNNfUmQ-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Catamaran', sans-serif;
 }
 
-.container{
-    height: 100%;
-    background-size: cover;
-}
-.body{
+.modal{
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0, 0.5);
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.centerbox{
-    width: 90%;
-    height: 90%;
-    background-color: #FFFFFF;
+.centerbox {
+    width: 75%;
+    height: 75%;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     padding-bottom: 20px;
-    box-shadow: 0 0 8px rgba(0,0,0, 0.4);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
-.title{
-    font-size: 20px;
-    color: black;
-    padding-bottom: 15px;
+h1{
+    margin-bottom: auto;
+    position: relative;
     text-align: center;
-    margin: 25px;
+    color: #FFFFFF;
+    font-size: 40px;
+}
+.styling{
+    font-family: 'Pacifico', cursive;
+    margin-right: 5px;
 }
 
-hr{
-    border-top: 1px solid #000000;
-    width: 75%;
+.inputDiv{
+    margin: 20px;
+    position: relative;
+    text-align: center;
 }
-
-input {
-    margin: 0;
+.inputDiv .input{
+    padding: 0.5rem 1rem;
+    height: 15px;
+    outline: none;
     border: none;
-    border-radius: 0;
-    width: 25%;
-    padding: 10px;
-    float: left;
-    font-size: 16px;
+    background-color: #ffffff;
+    width: 60%;
+    font-size: 15px;
+    margin: 0.25rem;
+    border-radius: 25px;
 }
-.addBtn {
-    padding: 10px;
-    width: 25%;
-    background: #d9d9d9;
-    color: #555;
-    float: left;
-    text-align: center;
-    font-size: 16px;
+.addButton{
+    height: 30px;
+    width: 75px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    color: #FFFFFF;
+    margin: 0.25rem;
+    background-color: blue;
     cursor: pointer;
-    transition: 0.3s;
-    border-radius: 0;
 }
-
-.addBtn:hover {
-    background-color: #bbb;
+.addButton hover{
+    opacity: 0.7;
+}
+.item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item .itemInput{
+    outline: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 20px;
+    width: 40%;
+}
+.checkButton{
+    font-size: 20px;
+    background: none;
+    outline: none;
+    border: none;
+    color: #32CD32;
+    cursor: pointer;
+    text-decoration: line-through;
+}
+.editButton{
+    font-size: 20px;
+    background: none;
+    outline: none;
+    border: none;
+    color: #ffae42;
+    cursor: pointer;
+}
+.deleteButton{
+    font-size: 20px;
+    background: none;
+    outline: none;
+    border: none;
+    color: #d11a2a;
+    cursor: pointer;
 }

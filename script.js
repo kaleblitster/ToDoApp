@@ -46,6 +46,9 @@ class item {
         localStorage.setItem('TODO', JSON.stringify(item));
 
     }
+    check(item){
+        onclick.item = check()
+    }
     edit (input){
         input.disabled = !input.disabled;
     }

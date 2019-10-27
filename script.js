@@ -2,6 +2,7 @@ const addButton = document.querySelector('.addButton');
 var input = document.querySelector('.input');
 const container = document.querySelector('.container');
 
+
 class item {
     constructor(itemName){
         this.createDiv(itemName);
@@ -13,6 +14,9 @@ class item {
         input.disabled = true;
         input.classList.add('item_input');
         input.type = 'text';
+        input.id = idCounter;
+
+
 
         let itemBox = document.createElement('div');
         itemBox.classList.add('item');
@@ -36,14 +40,13 @@ class item {
         itemBox.appendChild(editButton);
         itemBox.appendChild(deleteButton);
 
-        checkButton.addEventListener('click', () => this.check(input));
+        checkButton.addEventListener('click', () => this.check(item));
 
         editButton.addEventListener('click', () => this.edit(input));
 
         deleteButton.addEventListener('click', () => this.remove(itemBox));
 
     }
-
     edit (input){
         input.disabled = !input.disabled;
     }

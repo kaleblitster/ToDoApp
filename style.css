@@ -18,7 +18,7 @@ body{
 }
 .centerbox {
     width: 75%;
-    height: 75%;
+    height: auto;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     padding-bottom: 20px;

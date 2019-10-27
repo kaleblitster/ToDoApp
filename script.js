@@ -2,7 +2,6 @@ const addButton = document.querySelector('.addButton');
 var input = document.querySelector('.input');
 const container = document.querySelector('.container');
 
-const LIST_ADDED = 'currentList';
 
 class item {
     constructor(itemName){
@@ -44,6 +43,8 @@ class item {
 
         deleteButton.addEventListener('click', () => this.remove(itemBox));
 
+        localStorage.setItem('TODO', JSON.stringify(item));
+
     }
     edit (input){
         input.disabled = !input.disabled;
@@ -52,9 +53,6 @@ class item {
         container.removeChild(item);
     }
 }
-let storedChat = retrieveSelectedChat() || new Chat('convo');
-
-chats.push(storedChat);
 
 function check(){
     if (input.value != ''){
@@ -71,24 +69,19 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-function persistSelectedList() {
-    let listString = JSON.stringify(item);
-    localStorage.setItem(LIST_ADDED, listString);
+let data = localStorage.getItem('TODO');
+if (data){
+    item =JSON.parse(data);
+    id = item.length;
+    loadlist(item);
+
+}else {
+    item = [];
+    id =0;
 }
 
-function retrieveSelectedChat() {
-    let chatString = localStorage.getItem(CURRENT_CHAT_KEY);
-    if (chatString) {
-        let parsedChat = JSON.parse(chatString);
-
-        let chat = new Chat(parsedChat.name);
-        parsedChat.messages.forEach(message => {
-            let newMessage = new Message(message.text, message.user);
-            newMessage.seen = message.seen;
-            chat.addMessage(newMessage);
-        });
-
-        return chat;
-    }
-    return null;
+function loadlist(array) {
+    array.forEach(function (item) {
+        addToDo(item.name, input, container);
+    });
 }

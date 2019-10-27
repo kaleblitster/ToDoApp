@@ -2,6 +2,7 @@ const addButton = document.querySelector('.addButton');
 var input = document.querySelector('.input');
 const container = document.querySelector('.container');
 
+const LIST_ADDED = 'currentList';
 
 class item {
     constructor(itemName){
@@ -14,9 +15,6 @@ class item {
         input.disabled = true;
         input.classList.add('item_input');
         input.type = 'text';
-        input.id = idCounter;
-
-
 
         let itemBox = document.createElement('div');
         itemBox.classList.add('item');
@@ -54,6 +52,9 @@ class item {
         container.removeChild(item);
     }
 }
+let storedChat = retrieveSelectedChat() || new Chat('convo');
+
+chats.push(storedChat);
 
 function check(){
     if (input.value != ''){
@@ -69,3 +70,25 @@ window.addEventListener('keydown', (e) => {
         check();
     }
 });
+
+function persistSelectedList() {
+    let listString = JSON.stringify(item);
+    localStorage.setItem(LIST_ADDED, listString);
+}
+
+function retrieveSelectedChat() {
+    let chatString = localStorage.getItem(CURRENT_CHAT_KEY);
+    if (chatString) {
+        let parsedChat = JSON.parse(chatString);
+
+        let chat = new Chat(parsedChat.name);
+        parsedChat.messages.forEach(message => {
+            let newMessage = new Message(message.text, message.user);
+            newMessage.seen = message.seen;
+            chat.addMessage(newMessage);
+        });
+
+        return chat;
+    }
+    return null;
+}
